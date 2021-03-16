@@ -1,0 +1,45 @@
+using System;
+using System.Threading;
+
+namespace ConsoleThreads
+{
+    class Program
+    {
+        private int counter;
+
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Hello World! - main thread is running this");
+
+            // creating new thread
+            Thread thread1 = new Thread(WriteYToConsole);
+            thread1.Start();
+
+            Thread thread2 = new Thread(WriteZToConsole);
+            thread2.Start();
+
+            for (int i = 0; i < 1000; i++)
+            {
+                Console.Write("x");
+            }
+        }
+
+        static void WriteYToConsole()
+        {
+            for (int i = 0; i < 1000; i++)
+            {
+                Console.Write("y");
+            }
+        }
+
+        static void WriteZToConsole()
+        {
+            for (int i = 0; i < 1000; i++)
+            {
+                Console.Write("z");
+            }
+
+        }
+    }
+
+}
